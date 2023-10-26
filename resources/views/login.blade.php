@@ -116,7 +116,7 @@
         }
 
         body {
-            background: #4800f1;
+            background: #fff;
             /* Cor inicial (verde) */
             /* fallback for old browsers */
 

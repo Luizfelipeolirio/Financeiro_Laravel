@@ -3,9 +3,9 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Animated Login Form</title>
+    <title>Document</title>
+
     <Style>
         @import url(https://fonts.googleapis.com/css?family=Roboto:300);
 
@@ -85,15 +85,27 @@
 <body>
     <div class="login-page">
         <div class="form">
-            <form class="login-form">
-                <input type="text" placeholder="username" required/>
-                <input type="password" placeholder="password" required/>
-                <button>login</button>
-                <p class="message">Não tem cadastro? <a href="/cadastro">cadastre-se</a></p>
+            @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+            @endif
+            <form class="cadastro-form" method="POST" >
+                @csrf
+                <input type="text" placeholder="name" id="name" name="name" required />
+                <input type="password" placeholder="password" id="password" name="password" required />
+                <input type="text" placeholder="email address" id="email" name="email" required />
+
+                <button>create</button>
+                <p class="message">Já tem cadastro? <a href="/login">Entrar</a></p>
             </form>
+
         </div>
     </div>
-
 </body>
 
 </html>

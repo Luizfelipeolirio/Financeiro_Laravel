@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Cadastro</title>
 
     <Style>
         @import url(https://fonts.googleapis.com/css?family=Roboto:300);
@@ -96,11 +96,11 @@
             @endif
             <form class="cadastro-form" method="POST" >
                 @csrf
-                <input type="text" placeholder="name" id="name" name="name" required />
-                <input type="password" placeholder="password" id="password" name="password" required />
-                <input type="text" placeholder="email address" id="email" name="email" required />
+                <input type="text" placeholder="Nome" id="name" name="name" required />
+                <input type="password" placeholder="Senha" id="password" name="password" required />
+                <input type="text" placeholder="E-mail" id="email" name="email" required />
 
-                <button>create</button>
+                <button>Criar</button>
                 <p class="message">Já tem cadastro? <a href="/login">Entrar</a></p>
             </form>
 

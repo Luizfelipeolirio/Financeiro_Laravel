@@ -7,13 +7,38 @@
   <title>Controle Financeiro</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
 </head>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+
+        var data = google.visualization.arrayToDataTable([
+          ['Task', 'Hours per Day'],
+          ['Work',     11],
+          ['Eat',      2],
+          ['Commute',  2],
+          ['Watch TV', 2],
+          ['Sleep',    7]
+        ]);
+
+        var options = {
+          title: 'My Daily Activities'
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+        chart.draw(data, options);
+      }
+    </script>
 
 <style>
     
 @import url("https://fonts.googleapis.com/css2?family=Varela+Round&display=swap");
 
 body {
-  background-color: #4800f1;
+  background-color:#fff;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -26,10 +51,11 @@ body {
 
 .container {
   display: grid;
-  grid-template-columns: 1fr 1.5fr 2fr;
-  padding: 10px;
+  grid-template-columns: 1fr 1fr 1fr;
+  padding: 3px;
   gap: 10px;
   width: 95vw;
+ 
 }
 
 h1 {
@@ -51,9 +77,11 @@ h3 {
 }
 
 .item {
-  padding: 15px;
-  background-color: #e76f0c;
+  padding: 5px;
+  background-color: #fff;
   border-radius: 10px;
+  background-color: #fff;
+  border: 3px solid black;
 }
 
 h4 {
@@ -96,10 +124,7 @@ h4 {
   color: #c0392b;
 }
 
-label {
-  display: inline-block;
-  margin: 10px 0;
-}
+
 
 input[type="text"],
 input[type="number"] {
@@ -183,12 +208,24 @@ input[type="number"] {
   }
 }
 
+.borda {
+justify-content: center;
+align-items: center;
+display: flex;
+border: 3px solid black;
+margin-top: 5px;
+border-radius: 10px;
+flex-direction: column;
+
+
+}
+
 </style>
 
 
 
 <body>
-  <h1 class="h1 bg-info" >Controle Financeiro</h1>
+  <h1 class="h1" >Controle Financeiro</h1>
 
   <div class="container">
     <div class="item">
@@ -197,14 +234,16 @@ input[type="number"] {
       <h1 id="balanco" class="balanco">R$0.00</h1>
 
       <div class="inc-exp-container">
-        <div>
+        <div class="borda">
           <h3 class="montante">Receitas</h3>
           <p id="din-positivo" class="din positivo">+ R$0.00</p>
         </div>
 
-        <div>
+        <div class="borda">
           <h3 class="montante">Despesas</h3>
+          <div>
           <p id="din-negativo" class="din negativo">- R$0.00</p>
+          </div>
         </div>
       </div>
     </div>
@@ -245,7 +284,7 @@ input[type="number"] {
       </ul>
     </div>
   </div>
-
+  <div id="piechart" style="width: 900px; height: 500px;"></div>
   <script src="./controle.js"></script>
 </body>
 

@@ -86,10 +86,10 @@
     <div class="login-page">
         <div class="form">
             <form class="login-form">
-                <input type="text" placeholder="username" required/>
-                <input type="password" placeholder="password" required/>
+                <input type="text" placeholder="Nome" required/>
+                <input type="password" placeholder="Senha" required/>
                 <button>login</button>
-                <p class="message">Não tem cadastro? <a href="/cadastro">cadastre-se</a></p>
+                <p class="message">Não tem cadastro? <a href="/cadastro">Cadastre-se</a></p>
             </form>
         </div>
     </div>

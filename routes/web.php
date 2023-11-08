@@ -1,7 +1,8 @@
 <?php
 
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-use app\http\Controllers\UserController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,22 +15,17 @@ use app\http\Controllers\UserController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth/login');
 });
 
-Route::get('/index', function () {
-    return view('index');
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-
-Route::get('/login', function () {
-    return view('login');
-});
-
-Route::get('/cadastro', function () {
-    return view('cadastro');
-});
-// Dando erro 
-// action="{{ route('post.cadastro') }}"
-//Route::get('/cadastro', [UserController::class, 'create'])->name('get.cadastro'); 
-//Route::post('/cadastro', [UserController::class, 'store'])->name('post.cadastro'); 
+require __DIR__.'/auth.php';
